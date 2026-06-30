@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>СОП: Демонтаж, консервация, реквалификация | Технический директор | ОК | ПРК</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f5;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #1e2a3a;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .doc-header {
+            background: #0b2b3b;
+            color: white;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-bottom: 5px solid #2c9c8c;
+            position: relative;
+        }
+
+        .doc-title {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.75rem;
+        }
+
+        .doc-sub {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 1rem;
+        }
+
+        .meta-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            justify-content: space-between;
+        }
+
+        .meta-item {
+            font-weight: 500;
+        }
+
+        .meta-label {
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        /* WhatsApp-иконка в шапке */
+        .whatsapp-link {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: #25D366;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 10;
+        }
+
+        .whatsapp-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-link svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        @media (max-width: 720px) {
+            .whatsapp-link {
+                top: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 22px;
+            }
+            .whatsapp-link svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+        .nav-sticky {
+            background: #ffffff;
+            border-bottom: 1px solid #dce5ec;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+            padding: 0.6rem 1.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            color: #1e4663;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        .nav-links li a:hover {
+            background: #e6f0f5;
+            color: #0f5c6b;
+        }
+
+        .content {
+            padding: 2rem 2rem 2.5rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 2.8rem;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 600;
+            border-left: 6px solid #2c9c8c;
+            padding-left: 1rem;
+            margin-bottom: 1.4rem;
+            color: #0b2b3b;
+        }
+
+        .subsection-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem 0;
+            color: #1f5e6e;
+        }
+
+        .card-grid {
+            background: #f9fbfd;
+            border-radius: 24px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            border: 1px solid #e2edf2;
+            margin-bottom: 1.5rem;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 20px;
+            border: 1px solid #e0eef3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background: white;
+        }
+
+        th {
+            background: #e2f0f3;
+            color: #0b3b44;
+            padding: 12px 8px;
+            font-weight: 600;
+            border-bottom: 1px solid #cbdde4;
+        }
+
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #e9f0f4;
+            vertical-align: top;
+        }
+
+        .badge {
+            background: #eef2fa;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .appendix {
+            background: #fefcf5;
+            border-left: 4px solid #d9b48b;
+            margin-top: 1.5rem;
+        }
+
+        .footnote {
+            font-size: 0.8rem;
+            color: #4f6f7f;
+            border-top: 1px solid #d4e2e9;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 720px) {
+            .content {
+                padding: 1.2rem;
+            }
+            .doc-title {
+                font-size: 1.4rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .nav-links {
+                gap: 0.1rem;
+                padding: 0.5rem 1rem;
+            }
+            .nav-links li a {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        .list-styled {
+            padding-left: 1.5rem;
+            margin: 0.8rem 0;
+        }
+        .list-styled li {
+            margin: 0.4rem 0;
+        }
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: #d4e2ea;
+        }
+        strong.highlight {
+            color: #1f7a6b;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="doc-header">
+        <!-- WhatsApp-иконка -->
+        <a href="https://wa.me/77777717707" target="_blank" class="whatsapp-link" aria-label="Написать в WhatsApp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.032 21.965c-1.821 0-3.609-.478-5.188-1.385L1.5 22.5l2.006-5.253C2.562 15.596 2 13.848 2 12.032 2 6.498 6.498 2 12.032 2c5.534 0 10.032 4.498 10.032 10.032s-4.498 10.033-10.032 10.033zm0-18.414c-4.618 0-8.378 3.76-8.378 8.378 0 1.647.477 3.251 1.38 4.627l-.896 2.348 2.421-.889c1.318.772 2.831 1.186 4.473 1.186 4.617 0 8.378-3.76 8.378-8.378s-3.761-8.372-8.378-8.372zm4.778 10.509c-.157-.08-1.022-.504-1.18-.562-.157-.057-.271-.08-.385.08-.113.16-.44.562-.539.678-.1.115-.198.129-.355.049-.157-.08-.663-.245-1.262-.779-.463-.413-.775-.92-.865-1.076-.09-.156-.009-.24.067-.318.066-.066.157-.175.235-.263.078-.088.104-.148.157-.247.052-.098.026-.185-.013-.259-.039-.074-.385-.929-.528-1.272-.138-.331-.279-.273-.385-.273-.099 0-.212-.006-.325-.006s-.297.043-.455.213c-.157.17-.602.588-.602 1.434s.617 1.664.704 1.779c.086.115 1.203 1.85 2.918 2.471 1.716.621 1.716.414 2.026.388.31-.026 1.002-.409 1.143-.804.141-.395.141-.734.099-.804-.041-.07-.152-.113-.309-.193z"/>
+            </svg>
+        </a>
+
+        <div class="doc-title">📋 Стандартная операционная процедура<br>Демонтаж, консервация, транспортировка, монтаж и реквалификация технологического оборудования при переносе производственной площадки</div>
+        <div class="doc-sub">Система менеджмента качества — ISO 13485:2016 | Ответственный: ПРК</div>
+        <div class="meta-grid">
+            <div class="meta-item"><span class="meta-label">Документ СМК:</span> СОП-ОБ-XX</div>
+            <div class="meta-item"><span class="meta-label">Версия:</span> 01</div>
+            <div class="meta-item"><span class="meta-label">Дата введения:</span> ________ 20___ г.</div>
+            <div class="meta-item"><span class="meta-label">Заменяет:</span> вводится впервые</div>
+            <div class="meta-item"><span class="meta-label">Периодичность пересмотра:</span> 1 раз в 3 года / при изменении площадки</div>
+        </div>
+    </div>
+
+    <div class="nav-sticky">
+        <ul class="nav-links">
+            <li><a href="#napravlenie">Назначение</a></li>
+            <li><a href="#oblast">Область применения</a></li>
+            <li><a href="#normy">Нормативные ссылки</a></li>
+            <li><a href="#terminy">Термины</a></li>
+            <li><a href="#obshpol">Общие положения</a></li>
+            <li><a href="#procedure">Процедура</a></li>
+            <li><a href="#responsibility">Ответственность</a></li>
+            <li><a href="#records">Записи</a></li>
+            <li><a href="#appendixes">Приложения</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- 1. НАЗНАЧЕНИЕ -->
+        <div id="napravlenie" class="section">
+            <h2 class="section-title">1. Назначение</h2>
+            <div class="card-grid">
+                <p>Настоящая СОП устанавливает единый порядок действий персонала при переносе технологического и вспомогательного оборудования, инженерных систем и КИП с действующей производственной площадки на новую, включая этапы демонтажа, очистки, консервации, упаковки, транспортировки, монтажа, реквалификации (IQ/OQ/PQ) и допуска к эксплуатации.</p>
+                <p style="margin-top: 0.8rem;"><strong>Цель:</strong> обеспечение непрерывности валидационного и калибровочного статуса оборудования, прослеживаемости операций и соответствия требованиям ISO 13485-2016 на новой площадке.</p>
+            </div>
+        </div>
+
+        <!-- 2. ОБЛАСТЬ ПРИМЕНЕНИЯ -->
+        <div id="oblast" class="section">
+            <h2 class="section-title">2. Область применения</h2>
+            <div class="card-grid">
+                <p>Процедура применяется ко всему производственному, вспомогательному и КИП оборудованию, инженерным системам (водоподготовка, вентиляция, сжатый воздух), оснастке и СИ, подлежащим переносу при смене адреса площадки.</p>
+                <p>СОП применяется совместно с документами: «Управление изменениями», «Управление оборудованием», «Квалификация и валидация», «Управление СИ и калибровка», «Очистка и санитарная обработка».</p>
+            </div>
+        </div>
+
+        <!-- 3. НОРМАТИВНЫЕ ССЫЛКИ -->
+        <div id="normy" class="section">
+            <h2 class="section-title">3. Нормативные ссылки</h2>
+            <div class="card-grid">
+                <ul class="list-styled">
+                    <li>ISO 13485-2016 «Изделия медицинские. Системы менеджмента качества» (разделы 6,7,8);</li>
+                    <li>Кодекс РК «О здоровье народа и системе здравоохранения»;</li>
+                    <li>Закон РК «О разрешениях и уведомлениях» №202-V;</li>
+                    <li>Приказы МЗ РК № ҚР ДСМ-148/2020, № ҚР ДСМ-16 (регулирование изменения производственной площадки и перерегистрации);</li>
+                    <li>Сертификат СМК ИСО 13485 организации.</li>
+                </ul>
+                <p class="footnote">* Перед применением проверить действующие редакции актов.</p>
+            </div>
+        </div>
+
+        <!-- 4. ТЕРМИНЫ -->
+        <div id="terminy" class="section">
+            <h2 class="section-title">4. Термины, определения и сокращения</h2>
+            <div class="card-grid">
+                <p><strong>Демонтаж</strong> — отключение, разборка и снятие оборудования.<br>
+                <strong>Консервация</strong> — защита от коррозии, повреждений, загрязнений.<br>
+                <strong>Реквалификация</strong> — повторное подтверждение соответствия посредством IQ/OQ/PQ.<br>
+                <strong>Уведомление о переносе / изменении площадки</strong> — внутренний документ системы менеджмента качества, который инициирует, описывает и фиксирует утверждение всех этапов переноса оборудования, заменяет собой классический «Change Control» (Запрос на изменение) в рамках данной СОП.<br>
+                <strong>IQ, OQ, PQ, ОК (Отдел качества), ПРК (Представитель руководства по качеству)</strong> — стандартные валидационные роли и подразделения.</p>
+            </div>
+        </div>
+
+        <!-- 5. ОБЩИЕ ПОЛОЖЕНИЯ -->
+        <div id="obshpol" class="section">
+            <h2 class="section-title">5. Общие положения</h2>
+            <div class="card-grid">
+                <ol class="list-styled" style="list-style-type: decimal;">
+                    <li>Перенос оборудования рассматривается как изменение, влияющее на качество. Работы не начинаются до утверждения <strong>Уведомления о переносе / изменении площадки</strong> (внутренний документ, инициирующий процесс).</li>
+                    <li>Перенос осуществляется после завершения выпуска серий либо документированной оценки рисков.</li>
+                    <li>Для контактирующего с продукцией оборудования — обязательная очистка.</li>
+                    <li>Все действия документируются в реальном времени, записи «постфактум» не допускаются.</li>
+                    <li>Запуск производства на новой площадке — только после реквалификации, подтверждения перерегистрации (внесения изменений в регистрационное удостоверение) и подтверждения ИСО 13485. Окончательное решение о допуске принимает <strong>ПРК</strong>.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 6. ПРОЦЕДУРА -->
+        <div id="procedure" class="section">
+            <h2 class="section-title">6. Описание процедуры</h2>
+            
+            <div class="subsection-title">6.1. Этап 1. Планирование переноса</div>
+            <div class="card-grid">Составление Перечня оборудования (Приложение 1), риск-оценка FMEA, оформление <strong>Уведомления о переносе / изменении площадки</strong> с перечнем подрядчиков и регуляторных подач. Утверждение руководителем организации и ПРК.</div>
+            
+            <div class="subsection-title">6.2. Этап 2. Подготовка к демонтажу</div>
+            <div class="card-grid">Остановка процессов, очистка, протокол очистки. Фиксация калибровочного статуса, маркировка подключений. Отдел качества (ОК) контролирует статус валидации.</div>
+            
+            <div class="subsection-title">6.3. Этап 3. Демонтаж</div>
+            <div class="card-grid">По техническому плану (разработанному Техническим директором) оформляется Протокол демонтажа (Приложение 2) с фотофиксацией, выявленными отклонениями и маркировкой узлов.</div>
+            
+            <div class="subsection-title">6.4. Этап 4. Консервация и упаковка</div>
+            <div class="card-grid">Определение способа консервации Техническим директором, применение составов, упаковка, маркировка. Протокол консервации (Приложение 3) со сроком действия и условиями транспортировки.</div>
+            
+            <div class="subsection-title">6.5. Этап 5. Транспортировка и хранение</div>
+            <div class="card-grid">Соблюдение условий из протокола, акты приема-передачи, документирование условий промежуточного хранения.</div>
+            
+            <div class="subsection-title">6.6. Этап 6. Монтаж на новой площадке</div>
+            <div class="card-grid">Монтаж по исполнительным схемам, визуальная проверка перед монтажом, удаление консервационных материалов, оформление отклонений при повреждениях. Участие Технического директора и ОК.</div>
+            
+            <div class="subsection-title">6.7. Этап 7. Реквалификация (IQ/OQ/PQ) и ревалидация</div>
+            <div class="card-grid">
+                <p>Объем реквалификации согласно риск-оценке. Протокол монтажа и реквалификации (Приложение 4) включает:</p>
+                <ul class="list-styled">
+                    <li><strong>IQ</strong> — соответствие монтажа документации, подключения, условия установки.</li>
+                    <li><strong>OQ</strong> — проверка работоспособности, сигнализаций, безопасности.</li>
+                    <li><strong>PQ</strong> — стабильность при производственной нагрузке, включая квалификационные серии.</li>
+                </ul>
+                <p>Системы водоподготовки подлежат полной квалификации. Метролог обеспечивает калибровку до начала OQ. По итогам — ревалидация процессов. ОК (Отдел качества) совместно с Техническим директором утверждает протоколы.</p>
+            </div>
+            
+            <div class="subsection-title">6.8. Этап 8. Допуск к эксплуатации</div>
+            <div class="card-grid">Сводный отчёт, Акт допуска оборудования и площадки (Приложение 5) утверждается <strong>ПРК (Представителем руководства по качеству)</strong>. Производство товарной продукции — после выполнения условий п.5.5.</div>
+        </div>
+
+        <!-- 7. РАСПРЕДЕЛЕНИЕ ОТВЕТСТВЕННОСТИ -->
+        <div id="responsibility" class="section">
+            <h2 class="section-title">7. Распределение ответственности</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Роль</th><th>Зона ответственности в рамках процедуры</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Руководитель организации</strong></td><td>Утверждает план переноса (<strong>Уведомление о переносе / изменении площадки</strong>), обеспечивает ресурсы; делегирует полномочия ПРК.</td></tr>
+                        <tr><td><strong>ПРК (Представитель руководства по качеству)</strong></td><td>Высший контроль за соблюдением СОП, утверждение Акта допуска к эксплуатации, синхронизация с переоформлением регистрационного удостоверения и сертификата ИСО 13485, финальное решение о готовности площадки.</td></tr>
+                        <tr><td><strong>Отдел качества (ОК)</strong></td><td>Согласование протоколов (демонтажа, консервации, реквалификации), контроль валидационного/калибровочного статуса, организация хранения записей, управление документацией СМК.</td></tr>
+                        <tr><td><strong>Технический директор</strong></td><td>Технический план демонтажа/консервации/монтажа, назначение исполнителей, контроль подрядчиков, обеспечение соответствия инженерным требованиям.</td></tr>
+                        <tr><td><strong>Руководитель производства</strong></td><td>Остановка производства, освобождение от продукта, участие в приёмке и реквалификации.</td></tr>
+                        <tr><td><strong>Менеджер проекта переноса</strong></td><td>Координация графика, подрядчиков, регуляторных подач, контроль сроков и документации.</td></tr>
+                        <tr><td><strong>Метролог / служба КИП</strong></td><td>Фиксация статуса калибровки до демонтажа и обеспечение повторной калибровки после монтажа.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 8. ЗАПИСИ -->
+        <div id="records" class="section">
+            <h2 class="section-title">8. Записи</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Запись / документ</th><th>Ответственный за хранение</th><th>Срок хранения</th></tr></thead>
+                    <tbody>
+                        <tr><td>Уведомление о переносе / изменении площадки (вместо Change Control)</td><td>Руководитель ОК</td><td>не менее 5 лет / весь срок действия регистрационного досье</td></tr>
+                        <tr><td>Опись оборудования (Приложение 1)</td><td>Технический директор</td><td>не менее 5 лет</td></tr>
+                        <tr><td>Протокол очистки перед демонтажом</td><td>ОК</td><td>не менее 5 лет</td></tr>
+                        <tr><td>Протокол демонтажа (Приложение 2)</td><td>Технический директор / ОК</td><td>не менее 5 лет</td></tr>
+                        <tr><td>Протокол консервации и упаковки (Приложение 3)</td><td>Технический директор</td><td>не менее 5 лет</td></tr>
+                        <tr><td>Протокол монтажа и реквалификации IQ/OQ/PQ (Приложение 4)</td><td>ОК / Технический директор</td><td>весь срок эксплуатации + 5 лет</td></tr>
+                        <tr><td>Акт допуска к эксплуатации (Приложение 5)</td><td><strong>ПРК</strong></td><td>весь срок эксплуатации + 5 лет</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 9. ПРИЛОЖЕНИЯ -->
+        <div id="appendixes" class="section">
+            <h2 class="section-title">9. Приложения (формы документов СМК)</h2>
+            
+            <div class="appendix card-grid">
+                <h3 style="color:#2c6e5e;">📋 Приложение 1 — Опросный лист (опись) оборудования</h3>
+                <p><strong>Содержит:</strong> наименование, инв. номер, место установки, категория критичности, статус квалификации/калибровки, контакт с продукцией, особые условия, планируемый объём реквалификации (IQ / IQ+OQ / IQ+OQ+PQ). Утверждается Техническим директором и ОК.</p>
+                <div class="badge">Обязательно для каждой единицы оборудования</div>
+            </div>
+            <div class="appendix card-grid">
+                <h3 style="color:#2c6e5e;">🔧 Приложение 2 — Протокол демонтажа оборудования</h3>
+                <p><strong>Поля:</strong> № протокола, дата/время, исполнители, описание операций, фотофиксация, выявленные несоответствия, принятые меры, маркировка демонтированных узлов. Подпись составителя, Технического директора и ОК.</p>
+            </div>
+            <div class="appendix card-grid">
+                <h3 style="color:#2c6e5e;">📦 Приложение 3 — Протокол консервации и упаковки</h3>
+                <p>Способ консервации, применяемые материалы, тип упаковки, условия транспортирования/хранения, срок действия консервации, маркировка упаковки. Согласование с Техническим директором.</p>
+            </div>
+            <div class="appendix card-grid">
+                <h3 style="color:#2c6e5e;">⚙️ Приложение 4 — Протокол монтажа и реквалификации (IQ/OQ/PQ)</h3>
+                <p><strong>IQ:</strong> соответствие монтажа, документация, подключения, микроклимат. <strong>OQ:</strong> холостой ход, рабочие параметры, сигнализации. <strong>PQ:</strong> стабильность, мониторинг водоподготовки, квалификационные серии. Заключение и подписи: Технический директор, руководитель ОК, ПРК.</p>
+            </div>
+            <div class="appendix card-grid">
+                <h3 style="color:#2c6e5e;">✅ Приложение 5 — Акт допуска оборудования и площадки к эксплуатации</h3>
+                <p>Содержит: адрес новой площадки, № Уведомления о переносе, перечень оборудования, подтверждение реквалификации и ревалидации, статус регистрационного удостоверения (перерегистрация/внесение изменений) и сертификата ISO 13485, заключение о допуске. <strong>Утверждается ПРК (Представителем руководства по качеству).</strong></p>
+            </div>
+            <div class="footnote" style="margin-top: 1rem;">Примечание: настоящая СОП является шаблоном и подлежит адаптации к организационной структуре предприятия перед утверждением в СМК. Термин «Уведомление о переносе / изменении площадки» полностью заменяет классический «Запрос на изменение (Change Control)», определяя все этапы перемещения производства. ПРК несёт окончательную ответственность за допуск площадки.</div>
+        </div>
+
+        <hr>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: 0.8rem; color: #2c5a6e;">
+            <div><strong>Разработал:</strong> Технический директор / менеджер качества, ФИО</div>
+            <div><strong>Проверил (ОК):</strong> Руководитель отдела качества, ФИО</div>
+            <div><strong>Утвердил (ПРК):</strong> Представитель руководства по качеству, ФИО</div>
+        </div>
+        <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid #cde3ec; padding-top: 1rem; font-size: 0.75rem; color: #6a8e9e;">
+            © Система менеджмента качества — СОП регламентирует перенос производственной площадки. Ответственный за исполнение и актуализацию — ПРК.
+        </div>
+    </div>
+</div>
+</body>
+</html>
